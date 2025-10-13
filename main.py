@@ -50,7 +50,9 @@ def main():
             #aggiungo l'oggetto automobile alla classe autonoleggio, tramite la funzione
             #aggiungi_automobile che si trova nel file autonoleggio
             automobile = autonoleggio.aggiungi_automobile(marca, modello, anno, posti)
-            print(f"Automobile aggiunta: {automobile}")
+            print(f"Automobile aggiunta: id_automobile = {automobile.id_automobile}, marca = {automobile.marca}, "
+                  f"modello = {automobile.modello}, "
+                  f"anno di immatricolazione = {automobile.anno}, numero di posti = {automobile.num_posti}")
 
         elif scelta == "4":
             automobili_ordinate = autonoleggio.automobili_ordinate_per_marca()

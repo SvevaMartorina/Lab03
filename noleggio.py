@@ -7,7 +7,7 @@ class Noleggio:
 
     def __repr__(self):
         return (f'{type(self).__name__} '
-                f'(id_noleggio={self.id_noleggio}),'
+                f'(id_noleggio={self.id_noleggio},'
                 f'data={self.data_inizio},'
                 f'id_automobile={self.id_automobile},'
                 f'cognome_cliente={self.cognome_cliente})')

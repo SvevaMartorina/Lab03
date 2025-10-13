@@ -48,16 +48,18 @@ class Autonoleggio:
 
     def aggiungi_automobile(self, marca, modello, anno, num_posti):
         """Aggiunge un'automobile nell'autonoleggio: aggiunge solo nel sistema e non aggiorna il file"""
-        codice = 'A' +str(self.indice_auto + 1)
+        codice = 'A' + str(self.indice_auto)
         new_auto = Automobile(codice, marca, modello, anno, num_posti)
         # itero nella lista di impiegati e verifico che il codice dell'auto non sia già presente
         for auto in self.automobili:
-            if self.automobili[0] == codice:
+            if auto.id_automobile == codice:
                 raise Exception ("Automobile già presente nell'autonoleggio")
-            else:
-                self.automobili.append(new_auto)
-                self.indice_auto += 1
+        #se passo i controlli sul codice posso aggiungere la nuova auto alla lista
+        self.automobili.append(new_auto)
+        self.indice_auto += 1
+
         return new_auto
+
 
 
     def automobili_ordinate_per_marca(self):
@@ -97,4 +99,3 @@ class Autonoleggio:
             raise Exception("ID noleggio non trovato")
 
         return self.noleggi
-
