@@ -11,7 +11,7 @@ class Autonoleggio:
         self.automobili = [] #creo lista in cui inserirò le automobili
         self.noleggi = [] #creo lista in cui inserirò i noleggi
 
-        self.indice_auto = []
+        self.indice_auto = 1
         self.indice_noleggio = 1
 
 #tramite le funzioni getter e setter posso modificare il valore responsabile
@@ -40,8 +40,7 @@ class Autonoleggio:
                     #carico l'oggetto auto nella classe Automobile
                     auto = Automobile(field[0], field[1], field[2], field[3], field[4])
                     self.automobili.append(auto)
-                    self.indice_auto.append(codice)
-                    #self.indice_auto += 1
+                    self.indice_auto += 1
         except FileNotFoundError:
             print("File non trovato")
             return None
@@ -49,15 +48,15 @@ class Autonoleggio:
 
     def aggiungi_automobile(self, marca, modello, anno, num_posti):
         """Aggiunge un'automobile nell'autonoleggio: aggiunge solo nel sistema e non aggiorna il file"""
-        #codice = 'A' + str(self.indice_auto)
-        codice = 'A' +str(len(self.indice_auto))
+        codice = 'A' +str(self.indice_auto + 1)
         new_auto = Automobile(codice, marca, modello, anno, num_posti)
+        # itero nella lista di impiegati e verifico che il codice dell'auto non sia già presente
         for auto in self.automobili:
-            if auto.codice == codice:
+            if self.automobili[0] == codice:
                 raise Exception ("Automobile già presente nell'autonoleggio")
             else:
                 self.automobili.append(new_auto)
-                self.indice_auto.append(codice)
+                self.indice_auto += 1
         return new_auto
 
 
